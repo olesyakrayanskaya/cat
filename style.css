@@ -1,4 +1,4 @@
-html{
+html {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -6,21 +6,126 @@ html{
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background: linear-gradient(#a9cdee, #184b3a) no-repeat;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
     height: 100%;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.header{
+.header {
     flex: 0 0 auto;
- }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 40px 20px;
+}
 
- .main-content{
+.sun {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #e98629;
+    background: radial-gradient(at 10% 30%, #e98629, #f1c73a);
+    box-shadow: 0px 0px 30px 5px #f1c73a;
+    animation: sun-shines linear 15s infinite;
+    filter: blur(5px);
+}
+
+.clouds {
+    position: relative;
+}
+
+.cloud {
+    width: 100px;
+    height: 120px;
+    background: #a9cdee;
+    background: linear-gradient(#627f9b 20%, #eef4f8 80%);
+    clip-path: path(
+        " M 25,60 a 20,20 1 0,0 0,40 h 50 a 20,20 1 0,0 0,-40 a 10,10 1 0,0 -15,-10 a 15,15 1 0,0 -35,10 z"
+    );
+}
+
+.cloud:nth-child(1) {
+    position: absolute;
+    top: -40px;
+    right: 150px;
+}
+
+.cloud:nth-child(2) {
+    position: absolute;
+    top: -50px;
+    left: 150px;
+}
+
+.main-content {
     flex: 1 0 auto;
- }
+}
 
- .footer{
+.footer {
     flex: 0 0 auto;
- }
+}
+
+.grass {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.grass__item {
+    height: 80px;
+    width: 20px;
+    background-color: #133026;
+    background: linear-gradient(#63b37d, #133026);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    animation: grass-breeze 3s linear infinite alternate;
+}
+
+.grass__item:nth-child(odd) {
+    height: 60px;
+}
+
+@keyframes grass-breeze {
+    0% {
+        transform: translateX(0px);
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: translateX(2px);
+        transform: rotate(5deg);
+    }
+}
+
+@keyframes sun-shines {
+    0% {
+        width: 120px;
+        height: 120px;
+        box-shadow: 0px 0px 30px 5px #f1c73a;
+    }
+
+    50% {
+        width: 140px;
+        height: 140px;
+        box-shadow: 0px 0px 60px 10px #ffc506;
+    }
+
+    100% {
+        width: 120px;
+        height: 120px;
+        box-shadow: 0px 0px 30px 5px #f1c73a;
+    }
+}
