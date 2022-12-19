@@ -11,7 +11,7 @@ body {
     background: linear-gradient(#a9cdee, #184b3a) no-repeat;
     box-sizing: border-box;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .container {
@@ -27,51 +27,203 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: nowrap;
-    padding: 40px 20px;
+    padding: 60px 20px 10px;
+}
+
+@keyframes sun-shines {
+    0% {
+        width: 120px;
+        height: 120px;
+        box-shadow: 0px 0px 30px 5px #f1c73a;
+    }
+
+    50% {
+        width: 140px;
+        height: 140px;
+        box-shadow: 0px 0px 60px 10px #ffc506;
+    }
+
+    100% {
+        width: 120px;
+        height: 120px;
+        box-shadow: 0px 0px 30px 5px #f1c73a;
+    }
 }
 
 .sun {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background-color: #e98629;
     background: radial-gradient(at 10% 30%, #e98629, #f1c73a);
     box-shadow: 0px 0px 30px 5px #f1c73a;
-    animation: sun-shines linear 15s infinite;
+    animation: sun-shines linear 10s infinite;
     filter: blur(5px);
 }
 
 .clouds {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    width: 60%;
+    z-index: 100;
+    opacity: 0.5;
     position: relative;
+    animation: cloud-moove linear 40s infinite;
+}
+
+@keyframes cloud-moove {
+    0% {
+        transform: translateX(-1000px);
+    } 
+
+    25% {
+        transform: translateX(-500px);
+    }
+    
+    50% {
+        transform: translateX(0px);
+    } 
+
+    75% {
+        transform: translateX(500px);
+    }
+
+    100% {
+        transform: translateX(1000px);
+    }     
 }
 
 .cloud {
-    width: 100px;
-    height: 120px;
+    width: 140px;
+    height: 80px;
     background: #a9cdee;
-    background: linear-gradient(#627f9b 20%, #eef4f8 80%);
-    clip-path: path(
-        " M 25,60 a 20,20 1 0,0 0,40 h 50 a 20,20 1 0,0 0,-40 a 10,10 1 0,0 -15,-10 a 15,15 1 0,0 -35,10 z"
-    );
+    background: linear-gradient(rgba(98,127,155, 1) 20%, rgba(238, 244, 248, 1) 80%);
+    border-radius: 43%;
+    position: relative;
 }
 
-.cloud:nth-child(1) {
+.cloud::before {
+    content: "";
+    width: 80px;
+    height: 80px;
+    background: rgba(98,127,155, 1);
+    border-radius: 50%;
     position: absolute;
     top: -40px;
-    right: 150px;
+    left: 15px;
+    z-index: -1;
+    filter: blur(2px);
 }
 
-.cloud:nth-child(2) {
+.cloud::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: rgba(98,127,155, 1);
+    border-radius: 50%;
     position: absolute;
-    top: -50px;
-    left: 150px;
+    top: -25px;
+    left: 75px;
+    z-index: -1;
+    filter: blur(2px);
+}
+
+.cloud-1 {
+    width: 180px;
+    height: 80px;
+    border-radius: 45%;
+    margin-right: 40px;
+}
+
+.cloud-2 {
+    position: absolute;
+    top: 72px;
+    left: 246px;
+}
+
+.cloud-3 {
+    width: 120px;
+    height: 60px;
+    border-radius: 45%;
+    margin-left: 40px;
 }
 
 .main-content {
     flex: 1 0 auto;
 }
+
+.cat__head {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #131210;
+    box-shadow: 0 0 15px 5px #615f5b;
+    filter: blur(3px);
+    margin: 120px auto 0;
+    position: relative;
+}
+
+.ear {
+    width: 140px;
+    height: 100px;
+    background-color: #131210;
+    box-shadow: 0 0 15px 5px #615f5b;
+    filter: blur(3px);
+    clip-path: polygon(0 0, 0% 100%, 51% 84%);
+}
+
+.ear:nth-child(1) {
+    position: absolute;
+    top: -30px;
+    left: -45px;
+    transform: rotate(-42deg);
+}
+
+.ear:nth-child(2) {
+    position: absolute;
+    top: 18px;
+    right: -86px;
+    transform: rotate(60deg);
+}
+
+.eyes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    top: 90px;
+    left: 50px;
+}
+
+.eye {
+    width: 90px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #58b960;
+    z-index: 100;
+}
+
+.eye__item {
+    width: 20px;
+    height: 70px;
+    background-color: #131210;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.eye:nth-child(1) {
+    margin-right: 10px;
+}
+
+.eye:nth-child(2) {
+    margin-left: 10px;
+}
+
+
 
 .footer {
     flex: 0 0 auto;
@@ -110,22 +262,4 @@ body {
     }
 }
 
-@keyframes sun-shines {
-    0% {
-        width: 120px;
-        height: 120px;
-        box-shadow: 0px 0px 30px 5px #f1c73a;
-    }
 
-    50% {
-        width: 140px;
-        height: 140px;
-        box-shadow: 0px 0px 60px 10px #ffc506;
-    }
-
-    100% {
-        width: 120px;
-        height: 120px;
-        box-shadow: 0px 0px 30px 5px #f1c73a;
-    }
-}
