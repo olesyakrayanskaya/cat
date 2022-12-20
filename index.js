@@ -17,7 +17,3 @@ drawGrass()
 
 document.addEventListener('resize', drawGrass())
 
-console.log(userWidth)
-console.log(grassItemWidth)
-console.log(numbGrassItems)
-console.log(grass)

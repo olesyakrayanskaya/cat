@@ -18,7 +18,6 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -29,7 +28,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: nowrap;
-    padding: 60px 20px 10px;
+    padding: 60px 40px 10px;
 }
 
 @keyframes sun-shines {
@@ -55,6 +54,7 @@ body {
     box-shadow: 0px 0px 30px 5px #f1c73a;
     animation: sun-shines linear 10s infinite;
     filter: blur(5px);
+    margin: 30px 0 0 60px;
 }
 
 .clouds {
@@ -66,10 +66,10 @@ body {
     z-index: 100;
     opacity: 0.5;
     position: relative;
-    animation: cloud-moove linear 40s infinite;
+    animation: moove linear 40s infinite;
 }
 
-@keyframes cloud-moove {
+@keyframes moove {
     0% {
         transform: translateX(-100vw);
     }
@@ -133,12 +133,6 @@ body {
     margin-right: 40px;
 }
 
-.cloud-2 {
-    position: absolute;
-    top: 72px;
-    left: 246px;
-}
-
 .cloud-3 {
     width: 120px;
     height: 60px;
@@ -148,13 +142,15 @@ body {
 
 .main-content {
     flex: 1 0 auto;
+    position: relative;
 }
 
 .cat {
-    position: relative;
-    padding: 40px 10px;
-    height: 100%;
-    animation:  cloud-moove linear 15s 5.5s infinite, run linear 5s 0.5s 1;
+    position: absolute;
+    bottom: -90px;
+    left: 200px;
+    animation:  moove linear 10s 12s infinite, run linear 10s 2s 1 forwards;
+    height: 325px;
 }
 
 .cat__head {
@@ -163,8 +159,8 @@ body {
     border-radius: 50%;
     background-color: #131210;
     position: absolute;
-    left: 30%;
-    top: 100px;
+    left: 50px;
+    top: 10px;
 }
 
 .ear {
@@ -199,12 +195,12 @@ body {
 }
 
 .eye {
-    width: 50px;
+    width: 45px;
     height: 30px;
     border-radius: 50%;
     background-color: #58b960;
     z-index: 100;
-    animation: blink linear 1.5s -0.5s 1;
+    animation: blink linear 1.5s 1;
 }
 
 @keyframes blink {
@@ -259,39 +255,35 @@ body {
 
 .cat__body::before {
     content: "";
-    width: 100px;
-    height: 70px;
+    width: 80px;
+    height: 50px;
     border-radius: 50%;
     background-color: #131210;
     position: absolute;
-    left: -55px;
-    bottom: -10px;
-    transform: rotate(65deg);
+    left: -50px;
+    bottom: -3px;
+    transform: rotate(75deg);
 }
 
 .cat__body::after {
     content: "";
-    width: 100px;
-    height: 70px;
+    width: 80px;
+    height: 50px;
     border-radius: 50%;
     background-color: #131210;
     position: absolute;
     left: 110px;
-    bottom: 0px;
+    bottom: -10px;
     transform: rotate(160deg);
 }
 
 @keyframes run {
     0% {
-        left: 0;
-    }
-
-    50% {
-        left: 50%;
+        left: 200px;
     }
 
     100% {
-        left: 80%;
+        left: 100vw;
     }
 }
 
@@ -343,5 +335,66 @@ body {
     100% {
         transform: translateX(2px);
         transform: rotate(7deg);
+    }
+}
+
+@media (max-width: 800px) {
+    .sun {
+        width: 100px;
+        height: 100px;
+        margin: 20px 0 0 40px;
+    }  
+
+    .clouds {
+        flex-wrap: wrap;
+    }
+    
+    .cloud {
+        width: 100px;
+        height: 40px;
+        background: #a9cdee;
+        background: linear-gradient(rgba(98, 127, 155, 1) 20%, rgba(238, 244, 248, 1) 80%);
+        border-radius: 43%;
+        position: relative;
+    }
+    
+    .cloud::before {
+        content: "";
+        width: 40px;
+        height: 40px;
+        background: rgba(98, 127, 155, 1);
+        border-radius: 50%;
+        position: absolute;
+        top: -20px;
+        left: 15px;
+        z-index: -1;
+        filter: blur(2px);
+    }
+    
+    .cloud::after {
+        content: "";
+        width: 30px;
+        height: 30px;
+        background: rgba(98, 127, 155, 1);
+        border-radius: 50%;
+        position: absolute;
+        top: -10px;
+        left: 46px;
+        z-index: -1;
+        filter: blur(2px);
+    }
+    
+    .cloud-1 {
+        width: 80px;
+        height: 30px;
+        border-radius: 45%;
+        margin-right: 40px;
+    }
+    
+    .cloud-3 {
+        width: 80px;
+        height: 30px;
+        border-radius: 45%;
+        margin-left: 40px;
     }
 }
